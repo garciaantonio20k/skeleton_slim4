@@ -1,2 +1,8 @@
+# IDE PHPStorm
+.idea/
+# composer libraries
 vendor/
+# environment configuration
 .env
+# cache dir
+storage/views/

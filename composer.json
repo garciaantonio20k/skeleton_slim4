@@ -1,13 +1,13 @@
 {
-    "name": "codecourse/slender",
-    "description": "A slender starter structure for Slim",
-    "keywords": ["framework", "slim", "codecourse"],
+    "name": "garciaantonio20k/skeleton_slim4",
+    "description": "Slim 4 Skeleton",
+    "keywords": ["framework", "slim"],
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.0.0",
-        "slim/slim": "4.3.0",
-        "slim/twig-view": "3.0.0-alpha",
+        "php": ">=7.4.0",
+        "slim/slim": "4.10.0",
+        "slim/twig-view": "3.3.0",
         "symfony/var-dumper": "^3.2",
         "vlucas/phpdotenv": "^2.4",
         "slim/psr7": "^0.3.0",
@@ -19,7 +19,7 @@
         }
     },
     "scripts": {
-        "post-root-package-install": [
+        "init-env": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]
     }

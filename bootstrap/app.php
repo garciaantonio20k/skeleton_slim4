@@ -1,5 +1,8 @@
 <?php
 
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
@@ -23,21 +26,23 @@ $container->set('settings', function () {
         ],
 
         'views' => [
-            'cache' => getenv('VIEW_CACHE_DISABLED') === 'true' ? false : __DIR__ . '/../storage/views'
+            'dir' => getenv('VIEW_DIR'),
+            'cache' => getenv('VIEW_CACHE_ENABLED') === 'true' ? getenv('VIEW_DIR_CACHE') : false
         ]
     ];
 });
 
-$twig = new Slim\Views\Twig(__DIR__ . '/../resources/views', [
-    'cache' => $container->get('settings')['views']['cache']
-]);
-
-$twigMiddleware = new Slim\Views\TwigMiddleware(
-    $twig,
-    $container,
-    $app->getRouteCollector()->getRouteParser()
-);
-
-$app->add($twigMiddleware);
+// Twig Configuration
+// Source: https://github.com/slimphp/Twig-View
+// 1.Set view in Container
+$container->set('view', function () use ($container) {
+    $path = __DIR__.'/../'.getenv('VIEW_DIR');
+    return Twig::create(
+        $path,
+        ['cache' => __DIR__.'/../'.$container->get('settings')['views']['cache']]);
+});
+// 2.Add Twig-View Middleware
+$app->add(TwigMiddleware::createFromContainer($app));
 
 require_once __DIR__ . '/../routes/web.php';
+

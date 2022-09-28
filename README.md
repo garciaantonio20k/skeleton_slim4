@@ -1,22 +1,35 @@
-# slender
-A slender starter structure for the [Slim PHP framework](http://www.slimframework.com/)
+# Skeleton Slim 4
+A basic structure for the [Slim PHP framework](http://www.slimframework.com/) version 4.*
+For web application
 
 ## Installation
 
-### For Slim 3
+`composer create-project "garciantonio/skeleton_slim4" projectname`
 
-`composer create-project "codecourse/slender 1.0.2" projectname`
+## Contents
 
-### For Slim 4
+### Core
+- slim/slim (4.10)
+- slim/psr7
+- php-di/php-di
+### View
+- slim/twig-view
+- twig/twig (3.4.3)
+### Env
+- vlucas/phpdotenv
+### Debug
+- symfony/var-dumper
+## Database
+- PDO
 
-`composer create-project "codecourse/slender 2.1.1" projectname`
-
-## What's this all about then?
-
-The simplest boilerplate for getting started on a new Slim adventure. No clutter, ready to transform into your next big idea.
-
-Also used for [Codecourse](https://www.codecourse.com) courses, just to save a little time.
-
-## Contributing
-
-Feel free to submit any minor enhancements, but the goal here is to keep this as simple (yet as practical) as possible, so no huge additions. Thanks!
+## What's next?
+- Validation
+- Flash Messages
+- Logging (Monolog)
+- PDO enhanced (Doctrine DBAL)
+- CSRF
+- CRUD Example
+- Auth Example
+- Scripts
+- Static Analysis
+- Testing
